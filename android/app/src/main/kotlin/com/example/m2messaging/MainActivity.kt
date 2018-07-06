@@ -15,7 +15,16 @@ class MainActivity(): FlutterActivity() {
     super.onCreate(savedInstanceState)
 
     MethodChannel(flutterView, CHANNEL).setMethodCallHandler{ call, result ->
-      checkForRoot()
+      if (call.method == "runShellScript") {
+        val shellScript = checkForRoot()
+        if(shellScript) {
+          result.success(true);
+        } else {
+          result.error("UNAVAILABLE", "Something horrible happened", null)
+        }
+      } else {
+        result.notImplemented()
+      }
     }
 
     GeneratedPluginRegistrant.registerWith(this)
