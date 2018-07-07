@@ -10,6 +10,9 @@ description: A new Flutter project.
 version: 1.0.0+1
 
 dependencies:
+  dio: ^0.0.14
+  simple_permissions: ^0.1.5
+  shared_preferences: ^0.4.2
   flutter:
     sdk: flutter
 
