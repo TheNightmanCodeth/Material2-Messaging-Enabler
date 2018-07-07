@@ -25,6 +25,7 @@ class MainActivity : FlutterActivity() {
           "disableM2" -> toggle = "disable"
         }
         // Ran as blocking asynchronous call to run the enable/disable script
+        val permissions = async(CommonPool) {Shell.SU.run("chmod a+x /sdcard/Download/m2/m2_toggle.sh")}
         val script = async(CommonPool) { Shell.SU.run("sh /sdcard/Download/m2/m2_toggle.sh $toggle") }
         val await = async (CommonPool) { if (script.await().isSuccessful) result.success(true) 
         else result.error("UNAVAILABLE", "Script wasn't ran", null) }
