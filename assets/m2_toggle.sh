@@ -1,8 +1,6 @@
 #!/system/bin/sh
 
-if [ $1 == 'enable' ]; then
-  echo 'Fuck'
-fi
+am force-stop com.google.android.apps.messaging
 
 if [ $1 = 'enable' ]; then
   # Force-stop messaging
@@ -19,3 +17,5 @@ elif [ $1 = 'disable' ]; then
   # Modify the `bugle_phenotype__enable_phenotype_override` property, still using sed.
   sed -i '/<boolean name="bugle_phenotype__enable_phenotype_override" value="true" \/\>/c\    <boolean name="bugle_phenotype__enable_phenotype_override" value="false" \/\>' /data/data/com.google.android.apps.messaging/shared_prefs/PhenotypePrefs.xml
 fi
+
+am force-stop com.google.android.apps.messaging
