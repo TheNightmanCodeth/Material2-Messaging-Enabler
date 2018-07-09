@@ -26,17 +26,17 @@ class _LoaderDialogState extends State<LoaderDialog> {
               alignment: Alignment.topCenter,
               child: Text('Setup'),
             ),
-            Center(
-              child: Padding(
-                padding: EdgeInsets.only(top: 100.0, left: 50.0, right: 50.0),
-                child: LinearProgressIndicator(
-                  backgroundColor: Colors.blueGrey[100],
-                  valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
-                  value: _progress
-                ),
+            Padding(
+              padding: EdgeInsets.all(25.0),
+              child: LinearProgressIndicator(
+                backgroundColor: Colors.blueGrey[100],
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
+                value: _progress
               ),
             ),
-            Text('The small text'),
+            Text('Downloading toggle script...',
+              style: TextStyle(fontWeight: FontWeight.w300),
+            ),
           ],
         ),
       ],
@@ -58,7 +58,7 @@ class _LoaderDialogState extends State<LoaderDialog> {
     await Dio().download("https://github.com/TheNightmanCodeth/Material2-Messaging-Enabler/raw/master/assets/m2_toggle.sh", path,
       onProgress: (rec, tot) {        
         setState(() {
-          _progress = ((rec/tot)*100);
+          _progress = ((rec/tot)*10);
         }); 
       },
     );
