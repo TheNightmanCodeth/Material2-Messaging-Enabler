@@ -50,8 +50,6 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -97,10 +95,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   _runShellScript(enabled);
                 },
                 child: Container(
-                  decoration: BoxDecoration(color: Theme.of(context).accentColor),
+                  decoration: BoxDecoration(color: Colors.blue[600]),
                   child: ListTile(
-                    title: Text(title),
-                    trailing: Switch(
+                    title: Text(
+                      title,
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    trailing: Switch( 
+                      activeColor: Colors.white,   
                       value: enabled,
                       onChanged: (e) {
                         _runShellScript(!e);
